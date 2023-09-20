@@ -1,7 +1,16 @@
+import { SimpleGrid } from "@chakra-ui/react"
+
+import { heroCards } from "../utils/data"
 const Hero = () => {
+  const style = {
+    button: `px-4 py-2 bg-[#799A0D] hover:bg-[#8BAF13] duration-300 ease-in-out uppercase`,
+    heroContent: `hero__content z-1 text-white flex flex-col items-start gap-3 px-[80px] h-[600px] justify-center`,
+    heroCard:`hero__cards_card duration-300 ease-in flex flex-col justify-end items-center gap-2 py-4`,
+    heroCards:`hero__cards bg-white max-w-[1200px] mx-auto text-center relative`
+  }
   return (
-    <div className="hero min-h-screen my-0 ">
-      <div className="h-[45rem] absolute top-0 w-full z-[-1]">
+    <div className="hero h-[800px] my-0 ">
+      <div className="h-[50rem] absolute top-0 w-full z-[-1]">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1139 650" fill="none" className=" top-0 z-[-1] h-[100%]">
           <g filter="url(#filter0_b_6_2520)">
             <path d="M0 0H1139L607.5 650H0V0Z" fill="#1C1C1C" />
@@ -19,16 +28,29 @@ const Hero = () => {
 
         </div>
       </div>
-      <div className="hero__content z-1 text-white flex flex-col items-start gap-3 px-[80px] h-[600px] justify-center">
+      <div className={style.heroContent}>
         <h3 className="text-4xl">наша компания занимается</h3>
         <h1 className="text-8xl uppercase font-bold">лесозаготовкой</h1>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
           sed diam nonummy nibh <br /> euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
         </p>
-        <button className="px-4 py-2 bg-[#799A0D] hover:bg-[#8BAF13] duration-300 ease-in-out">
-        Оставить заявку
+        <button className={style.button}>
+          Оставить заявку
         </button>
       </div>
+      {/***********  Hero Cards  **********************/}
+      <SimpleGrid p="10px" columns={5} minChildWidth={220} className={style.heroCards} >
+        {heroCards.map((data, i) => {
+          return (
+            <div className={style.heroCard} key={i}>
+              <img src={data.img} alt={data.name} />
+              <h2 className="text-lg font-semibold">{data.name}</h2>
+              <p className="text-base"> {data.info}</p>
+              <button className={`${style.button} hidden hover:block`}>список продукции</button>
+            </div>
+          );
+        })}
+      </SimpleGrid>
     </div>
   )
 }

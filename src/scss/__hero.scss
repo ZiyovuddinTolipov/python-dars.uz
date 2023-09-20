@@ -4,3 +4,21 @@
     background-size: cover;
     background-position: right;
 }
+.hero__cards {
+    height: 300px;
+    margin-bottom: 50px;
+    &_card {
+        &:hover {
+            background: #000;
+            transform: scale(1.2);
+            color: #fff;
+            z-index: 3;
+            height: 328px;
+            width: 285px;
+        }
+        &:hover > img svg path {
+            fill: white;
+        }
+    }
+}
+

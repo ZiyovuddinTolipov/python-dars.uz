@@ -1,7 +1,9 @@
 
 const Info = () => {
   return (
-    <div>Info</div>
+    <div className="h-[700px] w-full bg-black ">
+      <div className="top h-[200px] bg-white w-full"></div>
+    </div>
   )
 }
 
