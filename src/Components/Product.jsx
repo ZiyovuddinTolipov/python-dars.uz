@@ -6,7 +6,7 @@ const Product = () => {
         <img src="./img/productLogo.svg" alt="logo" />
         <h2 className="text-4xl font-[300]">Наша продукция</h2>
       </header>
-    </div>
+    </div>      
   )
 }
 
