@@ -5,8 +5,8 @@ const Hero = () => {
   const style = {
     button: `px-4 py-2 bg-[#799A0D] hover:bg-[#8BAF13] duration-300 ease-in-out uppercase`,
     heroContent: `hero__content z-1 text-white flex flex-col items-start gap-3 px-[80px] h-[600px] justify-center`,
-    heroCard:`hero__cards_card duration-300 ease-in flex flex-col justify-end items-center gap-2 py-4`,
-    heroCards:`hero__cards bg-white max-w-[1200px] mx-auto text-center relative`
+    heroCard:`hero__cards_card shadow-lg mx-1 duration-300 ease-in-out flex flex-col justify-end items-center gap-2 py-4`,
+    heroCards:`hero__cards bg-white max-w-[1200px] mx-auto text-center relative z-10 `
   }
   return (
     <div className="hero h-[800px] my-0 ">
@@ -39,14 +39,14 @@ const Hero = () => {
         </button>
       </div>
       {/***********  Hero Cards  **********************/}
-      <SimpleGrid p="10px" columns={5} minChildWidth={220} className={style.heroCards} >
+      <SimpleGrid p="10px" columns={5} minChildWidth={160} className={style.heroCards} >
         {heroCards.map((data, i) => {
           return (
             <div className={style.heroCard} key={i}>
-              <img src={data.img} alt={data.name} />
-              <h2 className="text-lg font-semibold">{data.name}</h2>
+              <img src={data.img} alt={data.name} className="w-[73px] md:w-[81px] lg:w-[91px] " />
+              <h2 className="text-sm lg:text-lg font-semibold">{data.name}</h2>
               <p className="text-base"> {data.info}</p>
-              <button className={`${style.button} hidden hover:block`}>список продукции</button>
+              <button className={`${style.button} cadrs_button text-white text-base`}>список продукции</button>
             </div>
           );
         })}

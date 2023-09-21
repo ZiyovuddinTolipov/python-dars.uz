@@ -9,6 +9,7 @@ export default {
       backgroundImage: {
         'hero-pattern': "url('img/hero-pattern.png')",
         'footer-texture': "url('/img/footer-texture.png')",
+        'info-right':"url('/img/infoBg.svg')"
       }
     },
   },
