@@ -1,25 +1,45 @@
 import { useRoutes } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 // pages 
-import Home from "./Components/Home"
-import NotFound from './layouts/NoteFound';
-function App() {
+import HomePage from './pages/Home';
+import Login from "./pages/Login"
+import NotFound from './pages/NotFound';
+import Register from './pages/Register';
 
+import { ToastContainer } from "react-toastify"
+function App() {
   const routes = useRoutes([
-    { path: '/', element: <Home /> },
-    // any other
-    { path: '*', element: <NotFound /> },
+    { path: '/', element: <HomePage /> },
+    { path: '/login', element: <Login /> },
+    { path: '/register', element: <Register /> },
+    { path: '*', element: <NotFound /> }
+
   ]);
 
 
   return (
-  
-    <div className="">
-    {/* <Navbar /> */}
+
+    <main>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      {/* Same as */}
+      <ToastContainer />
+
+      {/* <Navbar /> */}
       {routes}
-    {/* <Footer /> */}
-    </div>
+      {/* <Footer /> */}
+    </main>
   );
 }
 
-export default App
+export default App;

@@ -1,16 +1,15 @@
+import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+
 import { BrowserRouter } from "react-router-dom";
-import { ChakraProvider } from "@chakra-ui/react";
-import './scss/index.scss'
+import App from './App.jsx'
+import './scss/all.scss'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
 
-  <ChakraProvider>
-    <App />
-  </ChakraProvider>
-
-{/* The rest of your app goes here */}
-</BrowserRouter>
+  </React.StrictMode>,
 )
