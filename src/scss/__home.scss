@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root {
+    --box-shadow: 2px 2px 5px 1px grey;
+    --border-radius: 4px;
+}
+body {
+    font-family:Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.circle {
+    width: 150px;
+    height: 250px;
+    bottom: 0px;
+    left: -100px;
+    background: linear-gradient(to bottom, #0077b5 40%, #131b27 50%);
+    filter: blur(50px);
+}
+.circle2 {
+    width: 150px;
+    height: 150px;
+    right: 100px;
+    background: linear-gradient(to bottom, #7091f5 40%, #000000 50%);
+    filter: blur(50px);
+}
+
+.slide-container {
+    display: flex;
+    width: calc(100px * 4);
+    height: 100px;
+    overflow: hidden;
+    align-items: center;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    animation-name: scroll;
+    animation-iteration-count: infinite;
+    animation-duration: 20s;
+    gap: 20px;
+}
+
+.slide {
+    width: 100px;
+    height: 30px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translatex(0);
+    }
+    100% {
+        transform: translatex(calc(-100px * 6));
+    }
+}
+
+@keyframes border-move {
+    0% {
+        stroke-dasharray: 0 1600;
+    }
+    100% {
+        stroke-dasharray: 1600 1600;
+    }
+}
+
+@keyframes fill-first {
+    0% {
+        fill: transparent;
+    }
+    100% {
+        fill: #3670a0;
+    }
+}
+
+@keyframes fill-second {
+    0% {
+        fill: transparent;
+    }
+    100% {
+        fill: #fed140;
+    }
+}
+
+#python-logo {
+    max-width: 60vw;
+    max-height: 60vh;
+    padding: 5px;
+    overflow: visible;
+    cursor: pointer;
+
+    path {
+        position: relative;
+        fill: transparent;
+        stroke-width: 5px;
+        transition: all 0.6s ease-in-out;
+
+        &:first-child {
+            stroke: #3670a0;
+            animation:
+                border-move 6s linear forwards,
+                fill-first 6s 6s linear forwards;
+            animation-iteration-count: infinite; /* Faqat 1 marta ishga tushirish */
+        }
+
+        &:last-child {
+            stroke: #fed140;
+            animation:
+                border-move 6s linear forwards,
+                fill-second 6s 6s linear forwards;
+            animation-iteration-count: infinite; /* Faqat 1 marta ishga tushirish */
+        }
+    }
+
+    &:hover {
+        path:first-child {
+            transform: translate(-2%, -2%);
+            text-shadow: 0 0 20px #3670a0;
+        }
+        path:last-child {
+            transform: translate(2%, 2%);
+            box-shadow: 0 0 20px #fed140;
+        }
+    }
+}
