@@ -2,8 +2,10 @@ import { Link } from "react-router-dom"
 
 const Home = () => {
     return (
-        <div className="h-[100vh] p-4 ">
-            <div className="max-w-[1400px] h-full max-h-[800px] bg-black/30 backdrop-blur-md  mx-auto flex flex-col md:flex-row-reverse rounded-3xl p-10 relative">
+        <div className="h-[100vh] p-6 relative home-page">
+                    <div className="circle rounded-full absolute " />
+                    <div className="circle2 rounded-full absolute " />
+            <div className="max-w-[1400px] h-full max-h-[800px] bg-black/20 backdrop-blur-md  mx-auto flex flex-col md:flex-row-reverse rounded-3xl p-10 relative">
                 <div className="w-full md:w-1/2 flex items-center justify-center">
                     <svg width="100%" height="100%" className="w-[60%] h-2/3" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="python-logo">
                         <path d="m116 296c0-30.328125 24.671875-55 55-55h170c13.785156 0 25-11.214844 25-25v-141c0-41.355469-33.644531-75-75-75h-70c-41.355469 0-75 33.644531-75 75v41h110c8.285156 0 15 6.714844 15 15s-6.714844 15-15 15h-181c-41.355469 0-75 33.644531-75 75v70c0 41.355469 33.644531 75 75 75h41zm105-220c-8.285156 0-15-6.714844-15-15s6.714844-15 15-15 15 6.714844 15 15-6.714844 15-15 15zm0 0" />
@@ -11,7 +13,6 @@ const Home = () => {
                     </svg>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-center items-start relative gap-3">
-                    <div className="circle2 rounded-full absolute " />
                     <h3 className="text-base md:text-2xl font text-yellow-200"><span className="text-blue-400">Python</span> - bu sizga tez ishlash imkonini beruvchi dasturlash tili
                         va tizimlarni yanada samarali integratsiyalash.
                     </h3>
