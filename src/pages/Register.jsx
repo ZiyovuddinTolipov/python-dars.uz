@@ -1,6 +1,7 @@
 import logo14 from "../assets/python-6.svg"
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -53,7 +54,7 @@ const Register = () => {
                                         <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Tasdiqlash</label>
                                     </div>
                                 </div>
-                                <a href="/login" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Sizda hisob mavjudmi?</a>
+                                <Link to="/login" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Sizda hisob mavjudmi?</Link>
                             </div>
                             <button type="submit" className="btn btn-active btn-primary w-full">Yuborish</button>
                         </form>

@@ -1,6 +1,7 @@
 import logo14 from "../assets/python-6.svg"
 import { useState } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -48,7 +49,7 @@ const Login = () => {
                                         <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Tasdiqlash</label>
                                     </div>
                                 </div>
-                                <a href="/register" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Hisob yaratish?</a>
+                                <Link to="/register" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Hisob yaratish?</Link>
                             </div>
                             <button type="submit" className="btn btn-active btn-primary w-full">Yuborish</button>
                         </form>
