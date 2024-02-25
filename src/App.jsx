@@ -5,15 +5,16 @@ import HomePage from './pages/Home';
 import Login from "./pages/Login"
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
+import Course from './pages/Course';
 
 import { ToastContainer } from "react-toastify"
 function App() {
   const routes = useRoutes([
     { path: '/', element: <HomePage /> },
     { path: '/login', element: <Login /> },
+    { path: '/course', element: <Course /> },
     { path: '/register', element: <Register /> },
     { path: '*', element: <NotFound /> }
-
   ]);
 
 
