@@ -3,7 +3,7 @@ import logo from "../assets/python-6.svg";
 const Dashboard = () => {
     return (
         <main className="w-[100%] min-h-[100vh] bg-slate-950">
-            <header className="fixed z-40 py-3 w-full pr-3 sm:px-12 bg-gray-100 dark:bg-gray-900 border-b">
+            <header className="fixed z-40 py-3 w-full pr-3 sm:px-12 bg-gray-900 border-b">
                 <nav className="max-w-[1200px] mx-auto flex items-center justify-between">
                     <img src={logo} alt="logo" className="h-12 mr-2" />
                     <ul>
@@ -13,7 +13,7 @@ const Dashboard = () => {
                 </nav>
             </header>
             <section className="flex">
-                <action className="custom-scrollbar sticky inset-x-0 top-0 flex h-screen flex-col justify-between overflow-y-auto p-6 pt-32 max-sm:hidden lg:w-[300px] bg-gray-100 dark:bg-gray-900">
+                <action className="custom-scrollbar sticky inset-x-0 top-0 flex h-screen flex-col justify-between overflow-y-auto p-6 pt-32 max-sm:hidden lg:w-[300px] bg-gray-900">
                     <div className="flex flex-1 flex-col gap-6">
                         <a href="/">
                             <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12">
