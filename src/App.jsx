@@ -6,6 +6,7 @@ import Login from "./pages/Login"
 import NotFound from './pages/NotFound';
 import Register from './pages/Register';
 import Course from './pages/Course';
+import Dashboard from './pages/Dashboard';
 
 import { ToastContainer } from "react-toastify"
 function App() {
@@ -13,6 +14,7 @@ function App() {
     { path: '/', element: <HomePage /> },
     { path: '/login', element: <Login /> },
     { path: '/course', element: <Course /> },
+    { path: '/dashboard/*', element: <Dashboard /> },
     { path: '/register', element: <Register /> },
     { path: '*', element: <NotFound /> }
   ]);
