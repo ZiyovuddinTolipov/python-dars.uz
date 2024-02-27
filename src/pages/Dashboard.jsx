@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/python-6.svg";
+import AddCourse from '../components/AddCourse'
+
 const Dashboard = () => {
     return (
         <main className="w-[100%] min-h-[100vh] bg-slate-950">
@@ -79,7 +81,9 @@ const Dashboard = () => {
                     </div>
                 </action>
                 <div className="flex min-h-screen flex-1 flex-col px-4 pb-6 pt-32 max-md:pb-14 sm:px-14">
-                    <div className="mx-auto w-full max-w-6xl custom-scrollbar">hello</div>
+                    <div className="mx-auto w-full max-w-6xl custom-scrollbar">
+                        <AddCourse />
+                    </div>
                 </div>
             </section>
         </main>
