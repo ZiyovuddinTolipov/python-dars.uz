@@ -3,8 +3,8 @@ import { Link } from "react-router-dom"
 const Home = () => {
     return (
         <div className="h-[100vh] p-6 relative home-page">
-                    <div className="circle rounded-full absolute " />
-                    <div className="circle2 rounded-full absolute " />
+            <div className="circle rounded-full absolute " />
+            <div className="circle2 rounded-full absolute " />
             <div className="max-w-[1400px] h-full max-h-[800px] bg-black/20 backdrop-blur-md  mx-auto flex flex-col md:flex-row-reverse rounded-3xl p-10 relative">
                 <div className="w-full md:w-1/2 flex items-center justify-center">
                     <svg width="100%" height="100%" className="w-[60%] h-2/3" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="python-logo">

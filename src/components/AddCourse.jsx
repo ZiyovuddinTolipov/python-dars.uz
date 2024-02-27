@@ -42,7 +42,7 @@ const FileUpload = () => {
     };
 
     return (
-        <div>
+        <div className="mx-auto w-full max-w-6xl custom-scrollbar">
             <form onSubmit={handleSubmit} className=" max-w-[1000px] mx-auto flex flex-col gap-4">
                 <div className="w-full flex flex-col md:flex-row justify-between">
                     <label className="form-control w-full max-w-xs md:w-1/2">

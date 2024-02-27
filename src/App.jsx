@@ -14,7 +14,10 @@ function App() {
     { path: '/', element: <HomePage /> },
     { path: '/login', element: <Login /> },
     { path: '/course', element: <Course /> },
-    { path: '/dashboard/*', element: <Dashboard /> },
+    {
+      path: '/dashboard/*',
+      element: <Dashboard />
+    },
     { path: '/register', element: <Register /> },
     { path: '*', element: <NotFound /> }
   ]);
