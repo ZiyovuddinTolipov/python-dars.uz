@@ -47,11 +47,11 @@ const FileUpload = () => {
                 <div className="w-full flex flex-col md:flex-row justify-between">
                     <label className="form-control w-full max-w-xs md:w-1/2">
                         <div className="label">
-                            <span className="label-text">What is your name?</span>
+                            <span className="label-text">Video dars havolasi</span>
                         </div>
                         <input
                             type="text"
-                            placeholder="Ism"
+                            placeholder="link"
                             value={name}
                             onChange={(event) => setName(event.target.value)}
                             className="input input-bordered input-primary w-full max-w-xs"
@@ -59,11 +59,10 @@ const FileUpload = () => {
                     </label>
                     <label className="form-control w-full md:w-1/2">
                         <div className="label">
-                            <span className="label-text">Your bio</span>
+                            <span className="label-text">Kurs mavzusi</span>
                         </div>
                         <textarea
                             className="textarea textarea-primary textarea-xs w-full max-w-xs"
-                            placeholder="Kurs mavzusi"
                             value={message}
                             onChange={(event) => setMessage(event.target.value)}
                         ></textarea>
