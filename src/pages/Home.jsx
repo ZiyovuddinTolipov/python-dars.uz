@@ -18,7 +18,7 @@ const Home = () => {
                     </h3>
                     <h2 className="text-3xl md:text-5xl font-Kanit font-[700] text-slate-50"> Kelajak hayotingiz uchun investitsiya qiling.</h2>
                     <div className="flex gap-3">
-                        <Link to='/register'>
+                        <Link to='/sa'>
                             <button className="my-3 rounded-md bg-blue-500 text-white px-2 py-1 md:px-4 md:py-3 btn hover:bg-blue-600 shadow-2xl">Ro’yxatdan o’tish</button>
                         </Link>
                         <Link to='/login'>
