@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // pages 
 import HomePage from './pages/Home';
 import Login from "./pages/Login"
-import NotFound from './pages/NotFound';
+import NotFound from './pages/Test';
 import Register from './pages/Register';
 import Course from './pages/Course';
 import Dashboard from './pages/Dashboard';

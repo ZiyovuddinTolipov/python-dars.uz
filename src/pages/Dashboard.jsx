@@ -16,7 +16,7 @@ const Dashboard = () => {
                 <action className="custom-scrollbar sticky inset-x-0 top-0 flex h-screen flex-col justify-between overflow-y-auto p-6 pt-32 max-sm:hidden lg:w-[300px] bg-gray-900">
                     <div className="flex flex-1 flex-col gap-6">
                         <a href="/">
-                            <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12">
+                            <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-black relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -35,7 +35,7 @@ const Dashboard = () => {
                                 <div className="max-lg:hidden font-bold">Bosh sahifa</div>
                             </button>
                         </a>
-                        <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12 text-purple-500 border border-purple-500">
+                        <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-black hover:text-accent-foreground relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12 text-purple-500 border border-purple-500">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -55,7 +55,7 @@ const Dashboard = () => {
                             <div className="max-lg:hidden font-bold">Statistika</div>
                         </button>
                         <Link to="add-course">
-                            <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12 border">
+                            <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-black hover:text-accent-foreground relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12 border">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
