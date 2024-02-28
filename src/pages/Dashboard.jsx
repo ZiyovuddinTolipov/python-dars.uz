@@ -19,10 +19,10 @@ const Dashboard = () => {
                 </nav>
             </header>
             <section className="flex">
-                <action className="custom-scrollbar sticky inset-x-0 top-0 flex h-screen flex-col justify-between overflow-y-auto p-6 pt-32 max-sm:hidden lg:w-[300px] bg-gray-900">
+                <div className="custom-scrollbar sticky inset-x-0 top-0 flex h-screen flex-col justify-between overflow-y-auto p-6 pt-32 max-sm:hidden lg:w-[300px] bg-gray-900">
                     {/* <CourseList /> */}
                     <AdminMenu />
-                </action>
+                </div>
                 <div className="flex min-h-screen flex-1 flex-col px-4 pb-6 pt-32 max-md:pb-14 sm:px-14">
                     <Routes >
                         <Route path="/add-course" element={<AddCourse />} />

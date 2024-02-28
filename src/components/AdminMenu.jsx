@@ -2,15 +2,14 @@ import { Link } from "react-router-dom";
 import {useNavigate} from "react-router-dom"
 
 const AdminMenu = () => {
+    const navigate = useNavigate();
 
     const handleClick = () => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        const navigate = useNavigate();
         const result = confirm('hisobdan chiqmoqchimisz ?');
         if (result) {
-            alert("hi")
-            // window.localStorage.clear();
-            // navigate("/")
+            window.localStorage.clear();
+            navigate("/")
             // console.log(true)
         } else {
             // Code to handle cancel action
