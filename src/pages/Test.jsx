@@ -1,57 +1,24 @@
-import React, { useState } from 'react';
+import AdminMenu from "../components/AdminMenu"
 
-const FileUpload = () => {
-    const [file, setFile] = useState(null);
-    const [name, setName] = useState('');
-    const [progress, setProgress] = useState(0);
-    const [alertMessage, setAlertMessage] = useState('');
 
-    const handleChange = (event) => {
-        const selectedFile = event.target.files[0];
-        setFile(selectedFile);
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('name', name);
-
-        try {
-            const response = await fetch('https://api.example.com/upload', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (!response.ok) {
-                throw new Error('Serverda xato yuz berdi');
-            }
-
-            setAlertMessage('Fayl muvaffaqiyatli yuklandi');
-        } catch (error) {
-            console.error('Xato:', error);
-            setAlertMessage('Fayl yuklashda xatolik yuz berdi');
-        }
-    };
-
+const Test = () => {
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type="file" onChange={handleChange} />
-                <input
-                    type="text"
-                    placeholder="Ism"
-                    value={name}
-                    onChange={(event) => setName(event.target.value)}
-                />
-                <button type="submit">Yuklash</button>
-            </form>
-            <progress value={progress} max="100"></progress>
-            <span>{progress}%</span>
-            <div>{alertMessage}</div>
-        </div>
-    );
-};
+        <div >
+            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+                {/* Page content here */}
+                <label htmlFor="my-drawer" className="btn btn-primary drawer-button">Open drawer</label>
+            </div>
+            <div className="drawer-side h-[100vh]">
+                <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+                <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+                    {/* Sidebar content here */}
+                    <AdminMenu />
 
-export default FileUpload;
+                </ul>
+            </div>
+        </div>
+    )
+}
+
+export default Test

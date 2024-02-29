@@ -39,7 +39,7 @@ const AdminMenu = () => {
                     </button>
                 </Link>
                 <Link to=" ">
-                    <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-black hover:text-accent-foreground relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12 text-purple-500 border border-purple-500">
+                    <button className="whitespace-nowrap text-sm font-mediumfocus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-black hover:text-accent-foreground relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12 text-purple-500 border border-purple-500">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -59,7 +59,7 @@ const AdminMenu = () => {
                         <div className="max-lg:hidden font-bold">Statistika</div>
                     </button>
                 </Link>
-                <Link to="add-course">
+                <Link to="/dashboard/add-course">
                     <button className="whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-black hover:text-accent-foreground relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12 border">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,7 @@ const AdminMenu = () => {
                 </Link>
             </div>
             <button
-                className="items-center justify-center whitespace-nowrap text-sm font-medium bg-red-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 flex w-full gap-1 rounded-sm bg-destructive px-4 py-3 text-white hover:bg-destructive/80"
+                className="items-center justify-center whitespace-nowrap text-sm font-medium bg-red-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 flex w-full gap-1 rounded-sm  px-4 py-3 text-white"
                 onClick={handleClick}
             >
                 <p className="text-[15px] font-semibold text-primaryGradient max-lg:hidden">
