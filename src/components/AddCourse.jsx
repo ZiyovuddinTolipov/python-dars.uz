@@ -1,49 +1,35 @@
-import React, { useState } from "react";
-import { toast } from "react-toastify"
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { AddCourse } from "../api/ApiService";
 const FileUpload = () => {
     const [file, setFile] = useState(null);
-    const [name, setName] = useState("");
-    const [message, setMessage] = useState("");
-    const [alertMessage, setAlertMessage] = useState("");
-
-    const handleChange = (event) => {
-        const selectedFile = event.target.files[0];
-        setFile(selectedFile);
-    };
+    const [videoURL, setVideoURL] = useState("");
+    const [courseTopic, setCourseTopic] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("name", name);
-        formData.append("message", message);
-
         try {
-            const response = await fetch("https://api.example.com/upload", {
-                method: "POST",
-                body: formData,
-            });
-
+            const response = await AddCourse(videoURL, courseTopic, file);
+            // Handle successful login, such as setting user state or redirecting
             if (!response.ok) {
-                throw new Error("Serverda xato yuz berdi");
+                toast.error("So'rov bajarilmadi")
+            } else if (response.data.Status == "Created") {
+                toast.success("Kurs qo'shildi");
+            } else {
+                toast.warning("Xatolik yuz berdi");
             }
-            toast.success("Fayl muvaffaqiyatli yuklandi !", {
-                position: "top-right"
-            });
-            // setAlertMessage("Fayl muvaffaqiyatli yuklandi");
         } catch (error) {
-            console.error("Xato:", error);
-            toast.error("Fayl yuklashda xatolik yuz berdi !", {
-                position: "top-right"
-            });
-            // setAlertMessage("Fayl yuklashda xatolik yuz berdi");
+            // Handle login error, such as displaying an error message
+            console.error("Login error:", error);
         }
     };
 
     return (
         <div className="mx-auto w-full max-w-6xl custom-scrollbar">
-            <form onSubmit={handleSubmit} className=" max-w-[1000px] mx-auto flex flex-col gap-4">
+            <form
+                onSubmit={handleSubmit}
+                className=" max-w-[1000px] mx-auto flex flex-col gap-4"
+            >
                 <div className="w-full flex flex-col md:flex-row justify-between">
                     <label className="form-control w-full max-w-xs md:w-1/2">
                         <div className="label">
@@ -52,8 +38,7 @@ const FileUpload = () => {
                         <input
                             type="text"
                             placeholder="link"
-                            value={name}
-                            onChange={(event) => setName(event.target.value)}
+                            value={videoURL} onChange={(e) => setVideoURL(e.target.value)}
                             className="input input-bordered input-primary w-full max-w-xs"
                         />
                     </label>
@@ -63,8 +48,8 @@ const FileUpload = () => {
                         </div>
                         <textarea
                             className="textarea textarea-primary textarea-xs w-full max-w-xs"
-                            value={message}
-                            onChange={(event) => setMessage(event.target.value)}
+                            value={courseTopic}
+                            onChange={(e) => setCourseTopic(e.target.value)}
                         ></textarea>
                     </label>
                 </div>
@@ -72,7 +57,7 @@ const FileUpload = () => {
                     <input
                         type="file"
                         className="file-input file-input-bordered file-input-primary max-w-xs w-full"
-                        onChange={handleChange}
+                        onChange={(e) => setFile(e.target.files[0])}
                     />
                     <div className="md:w-1/2 w-full mt-4 md:mt-0">
                         <button className="btn btn-success w-full max-w-xs" type="submit">

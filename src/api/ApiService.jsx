@@ -18,19 +18,44 @@ export const Login = async (username, password) => {
     }
 };
 
-export const SignUp = async (first_name,username, password) => {
+export const SignUp = async (first_name, username, password) => {
     const data = {
         "first_name": first_name,
         "username": username,
         "password": password
-        };
+    };
     try {
-        const response = await axios.post(`${API_REGISTER}/signup/`,data,  {
+        const response = await axios.post(`${API_REGISTER}/signup/`, data, {
             headers: {
                 'Content-Type': 'application/json'
             }
-        } );
+        });
         return response.data;
+    } catch (error) {
+        console.error(error);
+    }
+};
+export const AddCourse = async (url, name, file) => {
+    console.log(url, name, file);
+    try {
+        const token = localStorage.getItem('token'); // LocalStorage dan tokenni olish
+        const formData = new FormData();
+        formData.append('url', url);
+        formData.append('name', name);
+        formData.append('file', file);
+
+        const response = await axios.post(
+            `${API_ADD_DATA}/create_lesson/`,
+            formData,
+            {
+                headers: {
+                    // 'Content-Type': 'multipart/form-data',
+                    'Authorization': `Token ${token}`
+                }
+            }
+        );
+        console.log(response);
+        return response;
     } catch (error) {
         console.error(error);
     }
