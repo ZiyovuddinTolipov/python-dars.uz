@@ -1,26 +1,30 @@
 import logo14 from "../assets/python-6.svg"
 import { useState } from 'react';
-import axios from 'axios';
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import {SignUp} from "../api/ApiService"
 
 const Register = () => {
+    const [fullName, setFullName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [fullName, setFullName] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(`https://bkscoring.algorithmic.uz/api/Auth?userName=${username}&password=${password}`)
         try {
-            const response = await axios.post(`https://bkscoring.algorithmic.uz/api/Auth?userName=${username}&password=${password}`, {
-                headers: {},
-                body: JSON.stringify({}),
-            });
-            localStorage.setItem("user_jwt", response.data)
-            // console.log(response.data);
-            // console.log(response);
+            const data = await SignUp(fullName,username, password);
+            if (data.Status == 'created') {
+                toast.success("Hisob yaratildi!")
+            } else if (data.Status == 'This username is already') {
+                toast.error("Bunday hisob mavjud !")
+            } else {
+                toast.warning("Hisob yaratishda xatolik");
+            }
+            // Handle successful login, such as setting user state or redirecting
+            console.log('Logged in:', data);
         } catch (error) {
-            console.error('Error:', error);
+            // Handle login error, such as displaying an error message
+            console.error('Login error:', error);
         }
     };
 
@@ -43,7 +47,7 @@ const Register = () => {
                             </label>
                             <label className="input input-bordered flex items-center gap-2  input-primary w-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path fillRule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clipRule="evenodd" /></svg>
-                                <input type="password" className="grow bg-transparent" minLength={5} placeholder="parol" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                <input type="password" className="grow bg-transparent" minLength={4} placeholder="parol" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </label>
                             <div className="flex items-center justify-between">
                                 <div className="flex items-start">
