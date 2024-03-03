@@ -1,24 +1,30 @@
-import AdminMenu from "../components/AdminMenu"
+import  { useState } from 'react';
+import {Login} from '../api/ApiService';
 
+function LoginPage() {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-const Test = () => {
+    const handleLogin = async () => {
+        console.log(username,password);
+        try {
+            const data = await Login(username, password);
+            // Handle successful login, such as setting user state or redirecting
+            console.log('Logged in:', data);
+        } catch (error) {
+            // Handle login error, such as displaying an error message
+            console.error('Login error:', error);
+        }
+    };
+
     return (
-        <div >
-            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-                {/* Page content here */}
-                <label htmlFor="my-drawer" className="btn btn-primary drawer-button">Open drawer</label>
-            </div>
-            <div className="drawer-side h-[100vh]">
-                <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                    {/* Sidebar content here */}
-                    <AdminMenu />
-
-                </ul>
-            </div>
+        <div>
+            <h2>Login</h2>
+            <input type="text" placeholder="usernmae" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <button onClick={handleLogin}>Login</button>
         </div>
-    )
+    );
 }
 
-export default Test
+export default LoginPage;
