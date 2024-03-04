@@ -1,24 +1,30 @@
 import logo14 from "../assets/python-6.svg"
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
 import { Login } from "../api/ApiService";
 import {toast} from "react-toastify"
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         // console.log(`https://bkscoring.algorithmic.uz/api/Auth?userName=${username}&password=${password}`)
         try {
             const data = await Login(username, password);
+            console.log(typeof data.Status)
             // Handle successful login, such as setting user state or redirecting
-            if (data.Status == "OK") {
+            if (data.Status == "Admin") {
                 localStorage.setItem('token', data.Token);
+                localStorage.setItem('role', data.Status);
+                navigate('/dashboard')
+                toast.success("Tizimga muvaffaqiyatli kirdingiz!");
+            }else if(data.Status == "OK"){
+                navigate('/course')
                 toast.success("Tizimga muvaffaqiyatli kirdingiz!");
             }else {
-                toast.error("Login yoki Parol xato")
+                toast.error("Tizimga kirishda xatolik!")
             }
         } catch (error) {
             toast.error("Login yoki Parol xato")

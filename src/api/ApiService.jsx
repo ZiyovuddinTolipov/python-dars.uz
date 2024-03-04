@@ -55,7 +55,7 @@ export const AddCourse = async (url, name, file) => {
             }
         );
         console.log(response);
-        return response;
+        return response.data;
     } catch (error) {
         console.error(error);
     }

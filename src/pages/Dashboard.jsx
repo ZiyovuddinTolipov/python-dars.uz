@@ -7,8 +7,12 @@ import Statistic from "./Statistic";
 import CourseList from "../components/CourseList"
 import { RxHamburgerMenu } from "react-icons/rx";
 import Navbar from "../components/Navbar";
+// import {useNavigation} from "react-router-dom"
 
 const Dashboard = () => {
+    // const navigate = useNavigation();
+
+    // localStorage.getItem("role")=="Admin" ? navigate(''):navigate('/')
     return (
         <main className="w-[100%] min-h-[100vh] bg-slate-950">
             <Navbar />

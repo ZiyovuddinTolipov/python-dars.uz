@@ -1,6 +1,6 @@
 import logo14 from "../assets/python-6.svg"
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 import { toast } from "react-toastify";
 import {SignUp} from "../api/ApiService"
 
@@ -8,6 +8,7 @@ const Register = () => {
     const [fullName, setFullName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,6 +16,8 @@ const Register = () => {
             const data = await SignUp(fullName,username, password);
             if (data.Status == 'created') {
                 toast.success("Hisob yaratildi!")
+                localStorage.setItem('token', data.Token);
+                navigate('/course')
             } else if (data.Status == 'This username is already') {
                 toast.error("Bunday hisob mavjud !")
             } else {
