@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { AddCourse } from "../api/ApiService";
+import { AddCourse, GetLessonsList } from "../api/ApiService";
 const FileUpload = () => {
     const [file, setFile] = useState(null);
     const [videoURL, setVideoURL] = useState("");
@@ -23,6 +23,17 @@ const FileUpload = () => {
             console.error("Login error:", error);
         }
     };
+    useEffect(() => {
+        // Update the document title using the browser API
+        try {
+            const response = GetLessonsList(videoURL, courseTopic, file);
+            // Handle successful login, such as setting user state or redirecting
+            console.log(response.data)
+        } catch (error) {
+            // Handle login error, such as displaying an error message
+            console.error("Login error:", error);
+        }
+    });
 
     return (
         <div className="mx-auto w-full max-w-6xl custom-scrollbar">
@@ -40,6 +51,7 @@ const FileUpload = () => {
                             placeholder="link"
                             value={videoURL} onChange={(e) => setVideoURL(e.target.value)}
                             className="input input-bordered input-primary w-full max-w-xs"
+                            required
                         />
                     </label>
                     <label className="form-control w-full md:w-1/2">
@@ -50,6 +62,7 @@ const FileUpload = () => {
                             className="textarea textarea-primary textarea-xs w-full max-w-xs"
                             value={courseTopic}
                             onChange={(e) => setCourseTopic(e.target.value)}
+                            required
                         ></textarea>
                     </label>
                 </div>
@@ -58,6 +71,7 @@ const FileUpload = () => {
                         type="file"
                         className="file-input file-input-bordered file-input-primary max-w-xs w-full"
                         onChange={(e) => setFile(e.target.files[0])}
+                        required
                     />
                     <div className="md:w-1/2 w-full mt-4 md:mt-0">
                         <button className="btn btn-success w-full max-w-xs" type="submit">

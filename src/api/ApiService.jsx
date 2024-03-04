@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API_REGISTER = 'https://pycourse.pythonanywhere.com/v1';
-const API_ADD_DATA = 'https://pycourse.pythonanywhere.com/v2';
+const API_DATA = 'https://pycourse.pythonanywhere.com/v2';
 
 
 export const Login = async (username, password) => {
@@ -45,7 +45,7 @@ export const AddCourse = async (url, name, file) => {
         formData.append('file', file);
 
         const response = await axios.post(
-            `${API_ADD_DATA}/create_lesson/`,
+            `${API_DATA}/create_lesson/`,
             formData,
             {
                 headers: {
@@ -60,3 +60,16 @@ export const AddCourse = async (url, name, file) => {
         console.error(error);
     }
 };
+export const GetLessonsList = async () => {
+    const headers = {
+        "Authorization": `Token ${localStorage.getItem('token')}`
+    };
+    try {
+        const response = await axios.post(`${API_DATA}/get_lessons/`, {}, { headers });
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+    
+}
