@@ -26,7 +26,7 @@ const CourseList = () => {
     return (
         <ul className="flex flex-1 flex-col gap-2 text-white font-semibold">
             {lessons.map((lesson, index) => (
-                <Link to={`/course?course_id=${lesson.id}`} key={index} className={sty.listElement}>
+                <Link to={`/course?course_id=${lesson.id}`} key={index} className={searchParams.get('course_id')==lesson.id ?`${sty.listElement} bg-slate-800`: sty.listElement}>
                     <label id={`course-${index}`}>#{index+1} {lesson.name}</label>
                     <input type="checkbox" defaultChecked className="checkbox checkbox-primary h-5 w-5" name={`course-${index}`} />
                 </Link>

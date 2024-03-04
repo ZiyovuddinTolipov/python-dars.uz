@@ -8,7 +8,7 @@ const Dashboard = () => {
     const [lesson, setLessons] = useState([]);
     useEffect(() => {
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", "Token 7ecc54add502beeb3cdd7b6dfcddbbe7f4a81ed7");
+        myHeaders.append("Authorization", `Token ${localStorage.getItem('token')}`);
 
         const requestOptions = {
             method: "GET",
@@ -20,7 +20,7 @@ const Dashboard = () => {
             .then((result) => setLessons(result))
             .catch((error) => console.error(error));
     }, [searchParams]); // searchParams o'zgaruvchisi dependency listga qo'shildi
-    console.log(lesson)
+
     return (
         <main className="w-[100%] min-h-[100vh] bg-slate-950">
             <Navbar />
