@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const AdminMenu = () => {
     const navigate = useNavigate();
@@ -57,6 +57,27 @@ const AdminMenu = () => {
                             <line x1="15" x2="15" y1="6" y2="21" />
                         </svg>
                         <div className="max-lg:hidden font-bold">Statistika</div>
+                    </button>
+                </Link>
+                <Link to="/course?course_id=2">
+                    <button className="whitespace-nowrap text-sm font-mediumfocus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-black h relative flex items-center justify-start gap-4 rounded-sm p-4 transition w-full h-12 text-green-500 border border-green-500">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            className="lucide lucide-map"
+                        >
+                            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" />
+                            <line x1="9" x2="9" y1="3" y2="18" />
+                            <line x1="15" x2="15" y1="6" y2="21" />
+                        </svg>
+                        <div className="max-lg:hidden font-bold">Kurslar</div>
                     </button>
                 </Link>
                 <Link to="/dashboard/add-course">
