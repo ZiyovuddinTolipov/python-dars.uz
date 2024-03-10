@@ -17,6 +17,17 @@ export const Login = async (username, password) => {
         console.error(error);
     }
 };
+export const getUser = async () => {
+    const headers = {
+        "Authorization": `Token ${localStorage.getItem('token')}`
+    };
+    try {
+        const response = await axios.get(`${API_REGISTER}/getuser/`, {}, { headers });
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 export const SignUp = async (first_name, username, password) => {
     const data = {
@@ -30,7 +41,7 @@ export const SignUp = async (first_name, username, password) => {
                 'Content-Type': 'application/json'
             }
         });
-        return response.data;
+        return response;
     } catch (error) {
         console.error(error);
     }

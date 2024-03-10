@@ -13,15 +13,15 @@ const LoginPage = () => {
         // console.log(`https://bkscoring.algorithmic.uz/api/Auth?userName=${username}&password=${password}`)
         try {
             const data = await Login(username, password);
-            console.log(typeof data.Status)
+            console.log(data);
             // Handle successful login, such as setting user state or redirecting
+            localStorage.setItem('token', data.Token);
+            localStorage.setItem('role', data.Status);
             if (data.Status == "Admin") {
-                localStorage.setItem('token', data.Token);
-                localStorage.setItem('role', data.Status);
                 navigate('/dashboard')
                 toast.success("Tizimga muvaffaqiyatli kirdingiz!");
             }else if(data.Status == "OK"){
-                navigate('/course')
+                navigate('/course?course_id=2')
                 toast.success("Tizimga muvaffaqiyatli kirdingiz!");
             }else {
                 toast.error("Tizimga kirishda xatolik!")
@@ -39,7 +39,7 @@ const LoginPage = () => {
                         <a href="#" className="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white w-[100%]">
                             <img className="h-12 mr-2" src={logo14} alt="logo" />
                         </a>
-                        <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+                        <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit} >
                             <label className="input input-bordered flex items-center gap-2  input-primary w-full ">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
                                 <input type="text" className="grow bg-transparent" placeholder="@username" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -49,14 +49,7 @@ const LoginPage = () => {
                                 <input type="password" className="grow bg-transparent" minLength={1} placeholder="parol" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </label>
                             <div className="flex items-center justify-between">
-                                <div className="flex items-start">
-                                    <div className="flex items-center h-5">
-                                        <input id="remember" aria-describedby="remember" type="checkbox" className="checkbox checkbox-primary h-5 w-5" required />
-                                    </div>
-                                    <div className="ml-3 text-sm">
-                                        <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Tasdiqlash</label>
-                                    </div>
-                                </div>
+                                
                                 <Link to="/register" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Hisob yaratish?</Link>
                             </div>
                             <button type="submit" className="btn btn-active btn-primary w-full">Yuborish</button>
