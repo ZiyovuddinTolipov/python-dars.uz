@@ -15,13 +15,40 @@ const Register = () => {
         try {
             const data = await SignUp(fullName,username, password);
             if (data.Status == 'created') {
-                toast.success("Hisob yaratildi!")
+                toast.success('Hisob yaratildi!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
                 localStorage.setItem('token', data.Token);
                 navigate('/course')
             } else if (data.Status == 'This username is already') {
-                toast.error("Bunday hisob mavjud !")
+                toast.error('Bunday hisob mavjud!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             } else {
-                toast.warning("Hisob yaratishda xatolik");
+                toast.warning('Hisob yaratishda xatolik!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             }
             // Handle successful login, such as setting user state or redirecting
             console.log('Logged in:', data);

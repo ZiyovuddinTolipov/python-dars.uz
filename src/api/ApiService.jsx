@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const API_REGISTER = 'https://pycourse.pythonanywhere.com/v1';
 const API_DATA = 'https://pycourse.pythonanywhere.com/v2';
+const API_LESSON = 'https://pycourse.pythonanywhere.com/v3';
 
 
 export const Login = async (username, password) => {
@@ -17,17 +18,17 @@ export const Login = async (username, password) => {
         console.error(error);
     }
 };
-export const getUser = async () => {
-    const headers = {
-        "Authorization": `Token ${localStorage.getItem('token')}`
-    };
-    try {
-        const response = await axios.get(`${API_REGISTER}/getuser/`, {}, { headers });
-        return response;
-    } catch (error) {
-        console.error(error);
-    }
-}
+// export const getUser = async () => {
+//     const headers = {
+//         "Authorization": `Token ${localStorage.getItem('token')}`
+//     };
+//     try {
+//         const response = await axios.get(`${API_REGISTER}/getuser/`, {}, { headers });
+//         return response;
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
 
 export const SignUp = async (first_name, username, password) => {
     const data = {
@@ -83,4 +84,19 @@ export const GetLessonsList = async () => {
         console.error(error);
     }
     
+}
+
+export  const addComplate = async (lessonId) => {
+    const headers = {
+        "Authorization": `Token ${localStorage.getItem('token')}`
+    };
+    try {
+        const response = await axios.post(`${API_LESSON}/addcompleted/`,
+                                            {"lesson":lessonId}, 
+                                            { headers });
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
 }

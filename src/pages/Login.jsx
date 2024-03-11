@@ -19,15 +19,51 @@ const LoginPage = () => {
             localStorage.setItem('role', data.Status);
             if (data.Status == "Admin") {
                 navigate('/dashboard')
-                toast.success("Tizimga muvaffaqiyatli kirdingiz!");
+                toast.success('Tizimga muvaffaqiyatli kirdingiz!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             }else if(data.Status == "OK"){
                 navigate('/course?course_id=2')
-                toast.success("Tizimga muvaffaqiyatli kirdingiz!");
+                toast.success('Tizimga muvaffaqiyatli kirdingiz!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             }else {
-                toast.error("Tizimga kirishda xatolik!")
+                toast.error('Tizimga kirishda xatolik!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             }
         } catch (error) {
-            toast.error("Login yoki Parol xato")
+            toast.error('Login yoki parol xato!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         }
     };
 
