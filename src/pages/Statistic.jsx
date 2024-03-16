@@ -4,7 +4,8 @@ import axios from 'axios';
 
 const Statistic = () => {
     const [users, setUsers] = useState([]);
-
+    const [lessons, setLessons] = useState();
+    
     useEffect(() => {
         const fetchData = async () => {
             const headers = {
@@ -13,7 +14,7 @@ const Statistic = () => {
             try {
                 // console.log(headers);
                 const response = await axios.get(`https://pycourse.pythonanywhere.com/v1/getusers/`, { headers });
-                // console.log(response.data[7].completed.lessons.length); // Ma'lumotlarni ko'rish
+                console.log(response.data[7].completed[0].lessons.length); // Ma'lumotlarni ko'rish
                 setUsers(response.data)
             } catch (error) {
                 console.error(error);
@@ -23,6 +24,21 @@ const Statistic = () => {
         fetchData(); // fetchData funksiyasini chaqirish
     }, []); // useEffect ning ikkinchi argumenti tomonidan o'rnatingan massiv bo'sh qolgan, shuning uchun, bu useEffect komponenti yaratilganda faqat bir marta ishga tushadi
 
+    useEffect(() => {
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", `Token ${localStorage.getItem('token')}`);
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            redirect: "follow"
+        };
+        fetch("https://pycourse.pythonanywhere.com/v2/get_lessons/", requestOptions)
+            .then((response) => response.json())
+            .then((result) => setLessons(result))
+            .catch((error) => console.error(error));
+    }, []); // [] ichida bo'sh massiv berilgan, shuning uchun useEffect faqat bir marta ishga tushadi
+    console.log(lessons);
     return (
         <div>
             <div className="stats bg-slate-900 shadow w-full flex lg:flex-row flex-col">
@@ -73,15 +89,16 @@ const Statistic = () => {
                         {/* row 1 */}
 
                         {users.map(user => (
-                            
-                                user.id !== 1 && 
-                                    <tr key={user.id}>
-                                        <td>{user.id-1}</td>
-                                        <td>{user.first_name}</td>
-                                        <td>{user.username}</td>
-                                        <td>{user.completed.length}</td>
-                                    </tr>
-                            
+                            user.id !== 1 &&
+                            <tr key={user.id}>
+                                <td>{user.id - 1}</td>
+                                <td>{user.first_name}</td>
+                                <td>{user.username}</td>
+                                {/* <td>{user.completed.length}</td> */}
+                                
+                                <td>{user.completed ? user.completed.reduce((total, lesson) => total + lesson.lessons.length, 0) : 0}</td>
+                            </tr>
+
                         ))}
                     </tbody>
                 </table>
