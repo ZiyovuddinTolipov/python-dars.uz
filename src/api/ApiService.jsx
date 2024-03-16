@@ -18,17 +18,19 @@ export const Login = async (username, password) => {
         console.error(error);
     }
 };
-// export const getUser = async () => {
-//     const headers = {
-//         "Authorization": `Token ${localStorage.getItem('token')}`
-//     };
-//     try {
-//         const response = await axios.get(`${API_REGISTER}/getuser/`, {}, { headers });
-//         return response;
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
+export const getUsers =  () => {
+    const headers = {
+        "Authorization": `Token ${localStorage.getItem('token')}`
+    };
+    // console.log(headers)
+    try {
+        console.log(headers);
+        const response =  axios.get(`${API_REGISTER}/getusers/`, {}, { headers });
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 export const SignUp = async (first_name, username, password) => {
     const data = {
@@ -86,17 +88,16 @@ export const GetLessonsList = async () => {
     
 }
 
-export  const addComplate = async (lessonId) => {
-    const headers = {
-        "Authorization": `Token ${localStorage.getItem('token')}`
-    };
-    try {
-        const response = await axios.post(`${API_LESSON}/addcompleted/`,
-                                            {"lesson":lessonId}, 
-                                            { headers });
-        console.log(response);
-        return response;
-    } catch (error) {
-        console.error(error);
-    }
-}
+// export const addComplate = (lessonId) => {
+//     console.log(lessonId);
+//     const headers = {
+//         "Authorization": `Token ${localStorage.getItem('token')}`
+//     };
+//     try {
+//         const response = axios.post(`${API_LESSON}/addcompleted/`,{"lesson":lessonId}, { headers });
+//         console.log(response);
+//         return response;
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }

@@ -2,7 +2,7 @@ import CourseList from "../components/CourseList"
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { addComplate } from "../api/ApiService";
+// import { addComplate } from "../api/ApiService";
 import {toast} from 'react-toastify'
 
 const Dashboard = () => {
@@ -23,27 +23,25 @@ const Dashboard = () => {
             .catch((error) => console.error(error));
     }, [searchParams]); // searchParams o'zgaruvchisi dependency listga qo'shildi
 
-    const AddComplateCourse = async (lessonID) => {
-        // console.log(`https://bkscoring.algorithmic.uz/api/Auth?userName=${username}&password=${password}`)
-        try {
-            const data = await addComplate( lessonID);
-            console.log(data);
-            // Handle successful login, such as setting user state or redirecting
-            // localStorage.setItem('token', data.Token);
-            // localStorage.setItem('role', data.Status);
-        } catch (error) {
-            toast.error('qandaydir xatolik!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-        }
-    };
+    // const AddComplateCourse =  (lessonID) => {
+    //     // console.log(`https://bkscoring.algorithmic.uz/api/Auth?userName=${username}&password=${password}`)
+    //     try {
+    //         const response = addComplate( lessonID);
+    //         console.log(response);
+    //     } catch (error) {
+    //         toast.error('qandaydir xatolik!', {
+    //             position: "top-right",
+    //             autoClose: 5000,
+    //             hideProgressBar: false,
+    //             closeOnClick: true,
+    //             pauseOnHover: true,
+    //             draggable: true,
+    //             progress: undefined,
+    //             theme: "light",
+    //             });
+    //     }
+    // };
+    // onClick={AddComplateCourse(lesson.id)}>
     return (
         <main className="w-[100%] min-h-[100vh] bg-slate-950">
             <Navbar />
@@ -74,7 +72,7 @@ const Dashboard = () => {
                         <div className="p-4 lg:p-8 bg-slate-900 mt-4 rounded-md flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
                             <h1 className="text-2xl font-bold text--white">#{lesson.id} {lesson.name}.</h1>
                             <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium btn btn-info transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
-                                <span className="pr-2" onClick={AddComplateCourse(lesson.id)}>Darsni yakunlash</span>
+                                <span className="pr-2" >Darsni yakunlash</span>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="18"

@@ -29,6 +29,7 @@ const Dashboard = () => {
                     <Routes >
                         <Route path="/add-course" element={<AddCourse />} />
                         <Route path="/course" element={<Course />} />
+                        <Route path="/course" element={<Course />} />
                         <Route path="/" element={<Statistic />} />
                     </Routes>
 

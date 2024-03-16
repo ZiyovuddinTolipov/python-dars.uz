@@ -1,6 +1,28 @@
-import hamroyev from "../assets/hamroyev.jpg"
+import hamroyev from "../assets/hamroyev.jpg";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Statistic = () => {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const headers = {
+                "Authorization": `Token ${localStorage.getItem('token')}`
+            };
+            try {
+                // console.log(headers);
+                const response = await axios.get(`https://pycourse.pythonanywhere.com/v1/getusers/`, { headers });
+                // console.log(response.data[7].completed.lessons.length); // Ma'lumotlarni ko'rish
+                setUsers(response.data)
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchData(); // fetchData funksiyasini chaqirish
+    }, []); // useEffect ning ikkinchi argumenti tomonidan o'rnatingan massiv bo'sh qolgan, shuning uchun, bu useEffect komponenti yaratilganda faqat bir marta ishga tushadi
+
     return (
         <div>
             <div className="stats bg-slate-900 shadow w-full flex lg:flex-row flex-col">
@@ -26,7 +48,7 @@ const Statistic = () => {
                     <div className="stat-figure text-secondary hidden md:block">
                         <div className="avatar online">
                             <div className="w-10 md:w-16 rounded-full">
-                                <img src={hamroyev}/>
+                                <img src={hamroyev} />
                             </div>
                         </div>
                     </div>
@@ -36,7 +58,7 @@ const Statistic = () => {
                 </div>
 
             </div>
-            <div className="overflow-x-auto hidden">
+            <div className="overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
@@ -49,26 +71,18 @@ const Statistic = () => {
                     </thead>
                     <tbody>
                         {/* row 1 */}
-                        <tr>
-                            <th>1</th>
-                            <td>Shuhrat Hamroyev</td>
-                            <td>@setriin</td>
-                            <td>100%</td>
-                        </tr>
-                        {/* row 2 */}
-                        <tr>
-                            <th>2</th>
-                            <td>Asliddin</td>
-                            <td>@asliddin</td>
-                            <td>90%</td>
-                        </tr>
-                        {/* row 3 */}
-                        <tr>
-                            <th>3</th>
-                            <td>Jamshid</td>
-                            <td>@jamik1212</td>
-                            <td>89%</td>
-                        </tr>
+
+                        {users.map(user => (
+                            
+                                user.id !== 1 && 
+                                    <tr key={user.id}>
+                                        <td>{user.id-1}</td>
+                                        <td>{user.first_name}</td>
+                                        <td>{user.username}</td>
+                                        <td>{user.completed.length}</td>
+                                    </tr>
+                            
+                        ))}
                     </tbody>
                 </table>
             </div>
