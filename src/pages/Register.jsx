@@ -1,7 +1,7 @@
 import logo14 from "../assets/python-6.svg"
 import { useState } from 'react';
 import { Link ,useNavigate} from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import {SignUp} from "../api/ApiService"
 
 const Register = () => {
@@ -15,43 +15,16 @@ const Register = () => {
         try {
             const data = await SignUp(fullName,username, password);
             if (data.Status == 'created') {
-                toast.success('Hisob yaratildi!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
+                toast.success('Hisob yaratildi!');
                 localStorage.setItem('token', data.Token);
                 navigate('/course')
             } else if (data.Status == 'This username is already') {
-                toast.error('Bunday hisob mavjud!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
+                toast.error('Bunday hisob mavjud!');
             } else {
-                toast.warning('Hisob yaratishda xatolik!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
+                toast.error('Hisob yaratishda xatolik!');
             }
             // Handle successful login, such as setting user state or redirecting
-            console.log('Logged in:', data);
+            // console.log('Logged in:', data);
         } catch (error) {
             // Handle login error, such as displaying an error message
             console.error('Login error:', error);

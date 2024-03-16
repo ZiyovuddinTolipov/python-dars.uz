@@ -1,8 +1,8 @@
 import logo14 from "../assets/python-6.svg"
 import { useState } from 'react';
-import { Link ,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Login } from "../api/ApiService";
-import {toast} from "react-toastify"
+import { toast } from "react-hot-toast"
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -10,60 +10,20 @@ const LoginPage = () => {
     const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log(`https://bkscoring.algorithmic.uz/api/Auth?userName=${username}&password=${password}`)
         try {
             const data = await Login(username, password);
-            console.log(data);
+            localStorage.setItem("username", username);
             // Handle successful login, such as setting user state or redirecting
             localStorage.setItem('token', data.Token);
             localStorage.setItem('role', data.Status);
-            if (data.Status == "Admin") {
-                navigate('/dashboard')
-                toast.success('Tizimga muvaffaqiyatli kirdingiz!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
-            }else if(data.Status == "OK"){
-                navigate('/course?course_id=2')
-                toast.success('Tizimga muvaffaqiyatli kirdingiz!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
-            }else {
-                toast.error('Tizimga kirishda xatolik!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    });
+            if (data.Status == "Admin" || data.Status == "OK") {
+                toast.success('Tizimga muvaffaqiyatli kirdingiz!')
+                data.Status == "OK" ? navigate('/course?course_id=2') : navigate('/dashboard')
+            } else {
+                toast.error("Login yoki parol xato!")
             }
         } catch (error) {
-            toast.error('Login yoki parol xato!', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
+            toast.error('Tizimga kirishda muammo mavjud!');
         }
     };
 
@@ -85,7 +45,7 @@ const LoginPage = () => {
                                 <input type="password" className="grow bg-transparent" minLength={1} placeholder="parol" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </label>
                             <div className="flex items-center justify-between">
-                                
+
                                 <Link to="/register" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Hisob yaratish?</Link>
                             </div>
                             <button type="submit" className="btn btn-active btn-primary w-full">Yuborish</button>

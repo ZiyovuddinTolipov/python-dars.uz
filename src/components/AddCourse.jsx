@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { AddCourse, GetLessonsList } from "../api/ApiService";
 const FileUpload = () => {
     const [file, setFile] = useState(null);
@@ -11,14 +11,14 @@ const FileUpload = () => {
         try {
             const response = await AddCourse(videoURL, courseTopic, file);
             // Handle successful login, such as setting user state or redirecting
-            if (!response.ok) {
-                toast.error("So'rov bajarilmadi")
-            } else if (response.data.Status == "Created") {
+            if (response.data.Status == "Created") {
                 toast.success("Kurs qo'shildi");
             } else {
-                toast.warning("Xatolik yuz berdi");
+                toast.error("Xatolik yuz berdi");
             }
         } catch (error) {
+            toast.error("Xatolik yuz berdi");
+
             // Handle login error, such as displaying an error message
             console.error("Login error:", error);
         }

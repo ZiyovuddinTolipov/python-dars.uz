@@ -1,5 +1,4 @@
-import { useRoutes } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.css';
+import { useRoutes } from 'react-router-dom';;
 // pages 
 import HomePage from './pages/Home';
 import Login from "./pages/Login"
@@ -8,7 +7,7 @@ import Register from './pages/Register';
 import Course from './pages/Course';
 import Dashboard from './pages/Dashboard';
 
-import { ToastContainer } from "react-toastify"
+import { Toaster } from "react-hot-toast"
 function App() {
   const routes = useRoutes([
     { path: '/', element: <HomePage /> },
@@ -26,24 +25,12 @@ function App() {
   return (
 
     <main>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      {/* Same as */}
-      <ToastContainer />
+     <Toaster
+  position="top-right"
+  reverseOrder={false}
+/>
 
-      {/* <Navbar /> */}
       {routes}
-      {/* <Footer /> */}
     </main>
   );
 }

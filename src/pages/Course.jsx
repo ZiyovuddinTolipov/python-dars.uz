@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar";
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 // import { addComplate } from "../api/ApiService";
-import {toast} from 'react-toastify'
+import {toast} from 'react-hot-toast'
 
 const Dashboard = () => {
     const [searchParams] = useSearchParams();
