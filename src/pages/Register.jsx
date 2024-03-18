@@ -53,14 +53,6 @@ const Register = () => {
                                 <input type="password" className="grow bg-transparent" minLength={4} placeholder="parol" value={password} onChange={(e) => setPassword(e.target.value)} />
                             </label>
                             <div className="flex items-center justify-between">
-                                <div className="flex items-start">
-                                    <div className="flex items-center h-5">
-                                        <input id="remember" aria-describedby="remember" type="checkbox" className="checkbox checkbox-primary h-5 w-5" required />
-                                    </div>
-                                    <div className="ml-3 text-sm">
-                                        <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">Tasdiqlash</label>
-                                    </div>
-                                </div>
                                 <Link to="/login" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Sizda hisob mavjudmi?</Link>
                             </div>
                             <button type="submit" className="btn btn-active btn-primary w-full">Yuborish</button>

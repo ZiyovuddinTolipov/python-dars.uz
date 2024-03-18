@@ -1,7 +1,7 @@
 import CourseList from "../components/CourseList"
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 // import { addComplate } from "../api/ApiService";
 import {toast} from 'react-hot-toast'
 
@@ -70,9 +70,11 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="p-4 lg:p-8 bg-slate-900 mt-4 rounded-md flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                            <h1 className="text-2xl font-bold text--white">#{lesson.id} {lesson.name}.</h1>
+                            <h1 className="text-2xl font-bold text--white">#{lesson.id-1} {lesson.name}.</h1>
+                            <Link to={lesson.file} className="btn btn-success" target="_blank" download>topshiriq</Link>
+                            
                             <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium btn btn-info transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
-                                <span className="pr-2" >Darsni yakunlash</span>
+                                <span className="pr-2">Darsni yakunlash</span>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="18"
@@ -89,7 +91,6 @@ const Dashboard = () => {
                                     <path d="m9 11 3 3L22 4" />
                                 </svg>
                             </button>
-
                         </div>
                     </div>
                 </div>
