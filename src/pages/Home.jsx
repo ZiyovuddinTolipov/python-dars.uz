@@ -16,7 +16,9 @@ const Home = () => {
                     <h3 className="text-base md:text-2xl font text-yellow-200"><span className="text-blue-400">Python</span> - bu sizga tez ishlash imkonini beruvchi dasturlash tili
                         va tizimlarni yanada samarali integratsiyalash.
                     </h3>
-                    <h2 className="text-3xl md:text-5xl font-Kanit font-[700] text-slate-50"> Kelajak hayotingiz uchun investitsiya qiling.</h2>
+                    <h2 className="text-3xl md:text-5xl font-Kanit font-[700] text-slate-50">
+                        Kelajak <span className="[&::selection]:text-base-content relative col-start-1 row-start-1 bg-[linear-gradient(90deg,theme(colors.error)_0%,theme(colors.secondary)_9%,theme(colors.secondary)_42%,theme(colors.primary)_47%,theme(colors.accent)_100%)] bg-clip-text [-webkit-text-fill-color:transparent] [&::selection]:bg-blue-700/20 [@supports(color:oklch(0_0_0))]:bg-[linear-gradient(90deg,oklch(var(--s))_4%,color-mix(in_oklch,oklch(var(--s)),oklch(var(--er)))_22%,oklch(var(--p))_45%,color-mix(in_oklch,oklch(var(--p)),oklch(var(--a)))_67%,oklch(var(--a))_100.2%)]">
+                            hayotingiz uchun investitsiya </span>qiling.</h2>
                     <div className="flex gap-3">
                         <Link to='/register'>
                             <button className="my-3 rounded-md bg-blue-500 text-white px-2 py-1 md:px-4 md:py-3 btn hover:bg-blue-600 shadow-2xl">Ro’yxatdan o’tish</button>
