@@ -20,10 +20,7 @@ function App() {
     { path: '/register', element: <Register /> },
     { path: '*', element: <NotFound /> }
   ]);
-
-
   return (
-
     <main>
      <Toaster
   position="top-right"

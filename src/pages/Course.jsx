@@ -2,10 +2,11 @@ import CourseList from "../components/CourseList"
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-// import { addComplate } from "../api/ApiService";
+ import { addComplate } from "../api/ApiService";
 import {toast} from 'react-hot-toast'
 
 const Dashboard = () => {
+    const [completedLessons ,setCompletedLessons] = useState()
     const [searchParams] = useSearchParams();
     const [lesson, setLessons] = useState([]);
     useEffect(() => {
@@ -23,24 +24,39 @@ const Dashboard = () => {
             .catch((error) => console.error(error));
     }, [searchParams]); // searchParams o'zgaruvchisi dependency listga qo'shildi
 
-    // const AddComplateCourse =  (lessonID) => {
-    //     // console.log(`https://bkscoring.algorithmic.uz/api/Auth?userName=${username}&password=${password}`)
-    //     try {
-    //         const response = addComplate( lessonID);
-    //         console.log(response);
-    //     } catch (error) {
-    //         toast.error('qandaydir xatolik!', {
-    //             position: "top-right",
-    //             autoClose: 5000,
-    //             hideProgressBar: false,
-    //             closeOnClick: true,
-    //             pauseOnHover: true,
-    //             draggable: true,
-    //             progress: undefined,
-    //             theme: "light",
-    //             });
-    //     }
-    // };
+    useEffect(() => {
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", `Token ${localStorage.getItem('token')}`);
+
+        const requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            redirect: "follow"
+        };
+        fetch("https://pycourse.pythonanywhere.com/v3/comletesuser/", requestOptions)
+            .then((response) => response.json())
+            .then((result) => setCompletedLessons(result))
+            .catch((error) => console.error(error));
+
+    }, []);
+    console.log(lesson)
+    console.log(completedLessons);
+     const AddComplateCourse =  (lessonID) => {
+       try {
+           const response = addComplate( lessonID);
+            console.log(response);
+        } catch (error) {
+             toast.error('qandaydir xatolik!', {
+                 position: "top-right",
+                 autoClose: 5000,
+                hideProgressBar: false,
+                 closeOnClick: true,
+                 pauseOnHover: true, draggable: true,
+                 progress: undefined,
+                 theme: "light",
+                 });
+         }
+     };
     // onClick={AddComplateCourse(lesson.id)}>
     return (
         <main className="w-[100%] min-h-[100vh] bg-slate-950">
@@ -50,11 +66,11 @@ const Dashboard = () => {
                     <CourseList />
                 </div>
                 <div className="flex min-h-screen flex-1 flex-col px-4 pb-6 pt-20 md:pt-32  max-md:pb-14 sm:px-14">
-                    <div className="mx-auto w-full max-w-5xl">
+                    <div className="mx-auto w-full max-w-5xl" >
                         <div className="" data-vimeo-initialized="true">
                             <div style={{ padding: "61.93% 0 0 0", position: "relative" }}>
                                 <video
-                                    src={lesson.url}
+                                      src={lesson.url}
                                     frameBorder="0"
                                     style={{
                                         position: "absolute",
@@ -69,11 +85,15 @@ const Dashboard = () => {
                                 />
                             </div>
                         </div>
-                        <div className="p-4 lg:p-8 bg-slate-900 mt-4 rounded-md flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                            <h1 className="text-2xl font-bold text--white">#{lesson.id-1} {lesson.name}.</h1>
+                        <div
+                            className="p-4 lg:p-8 bg-slate-900 mt-4 rounded-md flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                            <h1 className="text-2xl font-bold text--white">#{lesson.id - 1} {lesson.name}.</h1>
                             <Link to={lesson.file} className="btn btn-success" target="_blank" download>topshiriq</Link>
-                            
-                            <button className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium btn btn-info transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+
+                            <button
+                                className="btn btn-info inline-flex items-center justify-center whitespace-nowrap h-10 px-4 py-2"
+                                onClick={() => AddComplateCourse(lesson.id)}
+                            >
                                 <span className="pr-2">Darsni yakunlash</span>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -87,8 +107,8 @@ const Dashboard = () => {
                                     strokeLinejoin="round"
                                     className="lucide lucide-check-circle "
                                 >
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                                    <path d="m9 11 3 3L22 4" />
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <path d="m9 11 3 3L22 4"/>
                                 </svg>
                             </button>
                         </div>

@@ -2,20 +2,6 @@ import logo from "../assets/python-6.svg";
 import user from "../assets/user.png"
 import { useState,useEffect } from "react";
 const Navbar = () => {
-    useEffect(() => {
-        const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Token ${localStorage.getItem('token')}`);
-
-        const requestOptions = {
-            method: "POST",
-            headers: myHeaders,
-            redirect: "follow"
-        };
-        fetch("https://pycourse.pythonanywhere.com/v3/comletesuser/", requestOptions)
-            .then((response) => response.json())
-            .then((result) => console.log(result))
-            .catch((error) => console.error(error));
-    }, []); 
 
     return (
         <header className="fixed z-40 py-3 w-full pr-3 sm:px-12 bg-gray-900 border-b">

@@ -88,16 +88,15 @@ export const GetLessonsList = async () => {
     
 }
 
-// export const addComplate = (lessonId) => {
-//     console.log(lessonId);
-//     const headers = {
-//         "Authorization": `Token ${localStorage.getItem('token')}`
-//     };
-//     try {
-//         const response = axios.post(`${API_LESSON}/addcompleted/`,{"lesson":lessonId}, { headers });
-//         console.log(response);
-//         return response;
-//     } catch (error) {
-//         console.error(error);
-//     }
-// }
+ export const addComplate = (lessonId) => {
+     console.log(lessonId);
+     const headers = {
+         "Authorization": `Token ${localStorage.getItem('token')}`};
+     try {
+         const response = axios.post(`${API_LESSON}/addcompleted/`,{"lesson":lessonId}, { headers });
+         console.log(response);
+         return response;
+     } catch (error) {
+         console.error(error);
+     }
+ };

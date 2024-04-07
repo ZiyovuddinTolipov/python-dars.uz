@@ -18,8 +18,7 @@ const CourseList = () => {
             .then((response) => response.json())
             .then((result) => setLessons(result))
             .catch((error) => console.error(error));
-    }, []); // [] ichida bo'sh massiv berilgan, shuning uchun useEffect faqat bir marta ishga tushadi
-
+    }, [searchParams]); // [] ichida bo'sh massiv berilgan, shuning uchun useEffect faqat bir marta ishga tushadi
     const sty = {
         listElement: "flex items-center justify-between px-3 py-2 bg-slate-900 hover:bg-slate-800 transition rounded-md"
     }
