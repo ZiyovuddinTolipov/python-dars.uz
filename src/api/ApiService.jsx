@@ -68,7 +68,7 @@ export const AddCourse = async (url, name, file) => {
                 }
             }
         );
-        console.log(response);
+        // console.log(response);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -80,7 +80,7 @@ export const GetLessonsList = async () => {
     };
     try {
         const response = await axios.post(`${API_DATA}/get_lessons/`, {}, { headers });
-        console.log(response);
+      //  console.log(response);
         return response;
     } catch (error) {
         console.error(error);

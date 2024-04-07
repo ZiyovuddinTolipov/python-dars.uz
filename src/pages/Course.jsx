@@ -107,7 +107,7 @@ const Dashboard = () => {
                             <Link to={lesson.file} className="btn btn-success" target="_blank" download>topshiriq</Link>
 
                             <button
-                                className="btn btn-info inline-flex items-center justify-center whitespace-nowrap h-10 px-4 py-2"
+                                className={`btn btn-info inline-flex items-center justify-center whitespace-nowrap h-10 px-4 py-2 ${localStorage.getItem('role')=='Admin'? 'hidden' : ''}`}
                                 onClick={() => AddComplateCourse(lesson.id)}
                             >
                                 <span className="pr-2">Darsni yakunlash</span>

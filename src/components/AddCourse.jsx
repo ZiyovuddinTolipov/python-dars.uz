@@ -11,7 +11,8 @@ const FileUpload = () => {
         try {
             const response = await AddCourse(videoURL, courseTopic, file);
             // Handle successful login, such as setting user state or redirecting
-            if (response.data.Status == "Created") {
+            console.log(response)
+            if (response.Status == "Created") {
                 toast.success("Kurs qo'shildi");
             } else {
                 toast.error("Xatolik yuz berdi");
