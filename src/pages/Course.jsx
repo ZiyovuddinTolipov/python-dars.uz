@@ -39,12 +39,12 @@ const Dashboard = () => {
             .catch((error) => console.error(error));
 
     }, []);
-    console.log(lesson)
-    console.log(completedLessons);
-     const AddComplateCourse =  (lessonID) => {
+    // console.log(lesson)
+   // console.log(completedLessons);
+     const AddComplateCourse = async (lessonID) => {
        try {
-           const response = addComplate( lessonID);
-            console.log(response);
+           const response = await addComplate( lessonID);
+           toast.success("Dars tugadi . keyingi darsga o'tishingiz mumkun")
         } catch (error) {
              toast.error('qandaydir xatolik!', {
                  position: "top-right",
@@ -57,6 +57,22 @@ const Dashboard = () => {
                  });
          }
      };
+  //  useEffect(() => {
+   //     if (Array.isArray(completedLessons) && lesson.id) {
+    //        const completedLessonIDs = completedLessons.reduce((acc, curr) => {
+    //            console.log(curr)
+   //             curr.lessons.forEach(completedLesson => {
+   //                 console.log(completedLesson)
+   //                 if (lesson.id == completedLesson.id) {
+  //                      acc.push(completedLesson.id);
+//}
+ //               });
+  //              return acc;
+  //          }, []);
+
+//console.log('Completed Lesson IDs:', completedLessonIDs);
+  //      }
+//}, [completedLessons, lesson.id]);
     // onClick={AddComplateCourse(lesson.id)}>
     return (
         <main className="w-[100%] min-h-[100vh] bg-slate-950">
@@ -70,7 +86,7 @@ const Dashboard = () => {
                         <div className="" data-vimeo-initialized="true">
                             <div style={{ padding: "61.93% 0 0 0", position: "relative" }}>
                                 <video
-                                      src={lesson.url}
+                                     // src={lesson.url}
                                     frameBorder="0"
                                     style={{
                                         position: "absolute",
