@@ -86,7 +86,7 @@ const Statistic = () => {
                         {users.map(user => (
                             user.id !== 1 &&
                             <tr key={user.id}>
-                                <td>{user.id - 1}</td>
+                                <td>{user.id - 14}</td>
                                 <td>{user.first_name}</td>
                                 <td>{user.username}</td>
                                 <td>{user.completed ? user.completed.reduce((total, lesson) => total + lesson.lessons.length, 0) : 0}</td>
