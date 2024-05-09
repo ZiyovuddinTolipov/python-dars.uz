@@ -2,11 +2,11 @@ import CourseList from "../components/CourseList"
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
- import { addComplate } from "../api/ApiService";
-import {toast} from 'react-hot-toast'
+import { addComplate } from "../api/ApiService";
+import { toast } from 'react-hot-toast'
 
 const Dashboard = () => {
-    const [completedLessons ,setCompletedLessons] = useState()
+    const [completedLessons, setCompletedLessons] = useState()
     const [searchParams] = useSearchParams();
     const [lesson, setLessons] = useState([]);
     useEffect(() => {
@@ -40,39 +40,39 @@ const Dashboard = () => {
 
     }, []);
     // console.log(lesson)
-   // console.log(completedLessons);
-     const AddComplateCourse = async (lessonID) => {
-       try {
-           const response = await addComplate( lessonID);
-           toast.success("Dars tugadi . keyingi darsga o'tishingiz mumkun")
+    // console.log(completedLessons);
+    const AddComplateCourse = async (lessonID) => {
+        try {
+            const response = await addComplate(lessonID);
+            toast.success("Dars tugadi . keyingi darsga o'tishingiz mumkun")
         } catch (error) {
-             toast.error('qandaydir xatolik!', {
-                 position: "top-right",
-                 autoClose: 5000,
+            toast.error('qandaydir xatolik!', {
+                position: "top-right",
+                autoClose: 5000,
                 hideProgressBar: false,
-                 closeOnClick: true,
-                 pauseOnHover: true, draggable: true,
-                 progress: undefined,
-                 theme: "light",
-                 });
-         }
-     };
-  //  useEffect(() => {
-   //     if (Array.isArray(completedLessons) && lesson.id) {
+                closeOnClick: true,
+                pauseOnHover: true, draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+        }
+    };
+    //  useEffect(() => {
+    //     if (Array.isArray(completedLessons) && lesson.id) {
     //        const completedLessonIDs = completedLessons.reduce((acc, curr) => {
     //            console.log(curr)
-   //             curr.lessons.forEach(completedLesson => {
-   //                 console.log(completedLesson)
-   //                 if (lesson.id == completedLesson.id) {
-  //                      acc.push(completedLesson.id);
-//}
- //               });
-  //              return acc;
-  //          }, []);
+    //             curr.lessons.forEach(completedLesson => {
+    //                 console.log(completedLesson)
+    //                 if (lesson.id == completedLesson.id) {
+    //                      acc.push(completedLesson.id);
+    //}
+    //               });
+    //              return acc;
+    //          }, []);
 
-//console.log('Completed Lesson IDs:', completedLessonIDs);
-  //      }
-//}, [completedLessons, lesson.id]);
+    //console.log('Completed Lesson IDs:', completedLessonIDs);
+    //      }
+    //}, [completedLessons, lesson.id]);
     // onClick={AddComplateCourse(lesson.id)}>
     return (
         <main className="w-[100%] min-h-[100vh] bg-slate-950">
@@ -86,7 +86,7 @@ const Dashboard = () => {
                         <div className="" data-vimeo-initialized="true">
                             <div style={{ padding: "61.93% 0 0 0", position: "relative" }}>
                                 <video
-                                     // src={lesson.url}
+                                    src={lesson.url}
                                     frameBorder="0"
                                     style={{
                                         position: "absolute",
@@ -107,7 +107,7 @@ const Dashboard = () => {
                             <Link to={lesson.file} className="btn btn-success" target="_blank" download>topshiriq</Link>
 
                             <button
-                                className={`btn btn-info inline-flex items-center justify-center whitespace-nowrap h-10 px-4 py-2 ${localStorage.getItem('role')=='Admin'? 'hidden' : ''}`}
+                                className={`btn btn-info inline-flex items-center justify-center whitespace-nowrap h-10 px-4 py-2 ${localStorage.getItem('role') == 'Admin' ? 'hidden' : ''}`}
                                 onClick={() => AddComplateCourse(lesson.id)}
                             >
                                 <span className="pr-2">Darsni yakunlash</span>
@@ -123,8 +123,8 @@ const Dashboard = () => {
                                     strokeLinejoin="round"
                                     className="lucide lucide-check-circle "
                                 >
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                    <path d="m9 11 3 3L22 4"/>
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <path d="m9 11 3 3L22 4" />
                                 </svg>
                             </button>
                         </div>
