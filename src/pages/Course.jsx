@@ -103,7 +103,7 @@ const Dashboard = () => {
                         </div>
                         <div
                             className="p-4 lg:p-8 bg-slate-900 mt-4 rounded-md flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-                            <h1 className="text-2xl font-bold text--white">#{lesson.id - 1} {lesson.name}.</h1>
+                            <h1 className="text-2xl font-bold text--white">#{lesson.id - 7} {lesson.name}.</h1>
                             <Link to={lesson.file} className="btn btn-success" target="_blank" download>topshiriq</Link>
 
                             <button
